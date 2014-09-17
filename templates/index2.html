@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
+
+<title>Bears for Life</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../../dist/static" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="starter-template.css/static/css" rel="stylesheet">
+
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <link href = "css/boostrap.css" rel = "stylesheet" media = "screen">
+      <link href = "css/style.css" rel = "stylesheet">
+    </head>
+    <body background = "http://www.livrigames.com/wallpaper/wallpapers/wallpapers-light-blue-designs-cool-wallpaper-cool-light-backgrounds-coolwallpaper-wallpapers-blue-designs.jpg"><div id="_GPL_e6a00_parent_div" style="position: absolute; top: 0px; left: 0px; width: 1px; height: 1px; z-index: 2147483647;"><object type="application/x-shockwave-flash" id="_GPL_e6a00_swf" data="http://cdncache-a.akamaihd.net/items/e6a00/storage.swf?r=1" width="1" height="1"><param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="flashvars" value="logfn=_GPL.items.e6a00.log&amp;onload=_GPL.items.e6a00.onload&amp;onerror=_GPL.items.e6a00.onerror&amp;LSOName=gpl"></object></div>
+
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <div class="container">
+              <h1>Bear Transit App</h1>
+              <h4>Greetings! Use this app to find the nearest Bear Transit Perimeter Line bus stop location and the next arrival time. The location box accepts the input of your location in longitude and latitude. In order to view a list of the stations, move your cursor to the map and scroll down. The time is shown in military time (ex. 7:00am = 7:00, 7:00pm = 19:00). Thankfully, we've programmed the app to automatically accept your computer's location through the browser, but if (for some weird reason) you happen to know the coordinates of a different location for which you'd like to use this app, feel free to do that.</h4>
+
+              <form action='/api/cheep' method="POST">
+                Location:
+                <input name="name" type="text" id="location" /> 
+                <input type="submit" />
+              </form>
+              <div id="feed">
+                {% if loc %}
+                <div class="loc">
+                  <br></br>
+                  <b>{{ loc[0] }}</b>
+                  <p>{{ loc[1]}}</p>
+                  <p>{{ loc[2]}}</p>
+                </div>
+                {% endif %}
+              </div>
+            </form>
+            <p><iframe src="//batchgeo.com/map/15467bab7b4617965f7077fb7be0f82d" frameborder="0" width="70%" height="450" style="border:1px solid #aaa;border-radius:10px;"></iframe></p><p><small>View <a href="http://batchgeo.com/map/15467bab7b4617965f7077fb7be0f82d">Bear Transit Bus Map</a> in a full screen map</small></p>
+
+            <p><small>Click <a href="http://pt.berkeley.edu/sites/default/files/New%20Perimeter%20line%20schedule.pdf">here</a> for Bear Transit Schedule</small></p>
+
+          </div>
+          
+        </div>
+      </div>
+
+
+      <script>
+      var position;
+      var latitude;
+      var longitude;
+      function onpositiondata(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        document.getElementById("location").value= latitude+","+longitude;
+      }
+
+      navigator.geolocation.getCurrentPosition(onpositiondata);
+      </script>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../static"></script>
+
+
+  </body></html>
